@@ -1,0 +1,239 @@
+/* ============================================================
+   Samurai Theme System
+   Each [data-theme="..."] block defines the full visual identity:
+   colors, fonts, radius. Background + touch effects live in
+   BackgroundEffect.jsx / TouchEffectLayer.jsx and read these vars.
+   ============================================================ */
+
+:root {
+  --radius: 10px;
+  --touch-size: 52px; /* medium touch-effect footprint, per spec */
+}
+
+/* 1. Crimson Shogun — bold imperial, ember drift */
+[data-theme='crimson-shogun'] {
+  --color-bg: #0d0b0c;
+  --color-bg-alt: #17100f;
+  --color-surface: #1c1414;
+  --color-primary: #8c1c22;
+  --color-accent: #d4af37;
+  --color-text: #f2e9e4;
+  --color-text-muted: #b99a90;
+  --color-border: #3a1f1f;
+  --color-danger: #e2483d;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* 2. Bamboo Forest — zen green, swaying stalks */
+[data-theme='bamboo-forest'] {
+  --color-bg: #10201a;
+  --color-bg-alt: #16291f;
+  --color-surface: #1c3327;
+  --color-primary: #3f6b4f;
+  --color-accent: #c9a35d;
+  --color-text: #eaf1ea;
+  --color-text-muted: #9db8a8;
+  --color-border: #2b4535;
+  --color-danger: #d16b4f;
+  --font-display: 'Shippori Mincho', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* 3. Moonlit Ronin — cold indigo, drifting clouds */
+[data-theme='moonlit-ronin'] {
+  --color-bg: #0a0f1e;
+  --color-bg-alt: #101a30;
+  --color-surface: #16233f;
+  --color-primary: #26375a;
+  --color-accent: #bcd4f0;
+  --color-text: #e7edf7;
+  --color-text-muted: #8ea1c2;
+  --color-border: #22314f;
+  --color-danger: #e07a6b;
+  --font-display: 'Zen Old Mincho', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* 4. Cherry Blossom — soft pink, falling petals */
+[data-theme='cherry-blossom'] {
+  --color-bg: #241b1f;
+  --color-bg-alt: #2c2024;
+  --color-surface: #35262b;
+  --color-primary: #e8a8b8;
+  --color-accent: #f6e9ec;
+  --color-text: #fbeef1;
+  --color-text-muted: #c9a3ac;
+  --color-border: #4a333a;
+  --color-danger: #e2607a;
+  --font-display: 'Kosugi Maru', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* 5. Ink & Steel — paper minimalism, ink wash */
+[data-theme='ink-steel'] {
+  --color-bg: #f4f1ea;
+  --color-bg-alt: #ece7dc;
+  --color-surface: #ffffff;
+  --color-primary: #1a1a1a;
+  --color-accent: #4c6b8a;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c5850;
+  --color-border: #d8d2c4;
+  --color-danger: #b23a2f;
+  --font-display: 'Noto Serif JP', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* 6. Golden Temple — warm maroon + gold glow */
+[data-theme='golden-temple'] {
+  --color-bg: #2b1417;
+  --color-bg-alt: #331a1c;
+  --color-surface: #3d2023;
+  --color-primary: #7a2e2e;
+  --color-accent: #e0b23c;
+  --color-text: #f7ecd7;
+  --color-text-muted: #c9a86f;
+  --color-border: #4a2b26;
+  --color-danger: #e2543d;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* 7. Storm Warrior — electric teal, lightning */
+[data-theme='storm-warrior'] {
+  --color-bg: #12161c;
+  --color-bg-alt: #171d25;
+  --color-surface: #1d2833;
+  --color-primary: #1d2833;
+  --color-accent: #33d1c9;
+  --color-text: #e6f7f6;
+  --color-text-muted: #8fa3ab;
+  --color-border: #263542;
+  --color-danger: #ff5b54;
+  --font-display: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* 8. Ashen Dojo — rustic clay, drifting dust */
+[data-theme='ashen-dojo'] {
+  --color-bg: #1c1815;
+  --color-bg-alt: #231e19;
+  --color-surface: #2b241e;
+  --color-primary: #7a5a3a;
+  --color-accent: #c97a3d;
+  --color-text: #efe6da;
+  --color-text-muted: #b2a08a;
+  --color-border: #3c3227;
+  --color-danger: #d15a3d;
+  --font-display: 'Yuji Syuku', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   Background effect keyframes (one distinct motion per theme)
+   ============================================================ */
+
+@keyframes drift-embers {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.8; }
+  100% { transform: translateY(-110vh) translateX(20px); opacity: 0; }
+}
+
+@keyframes sway-bamboo {
+  0%, 100% { transform: rotate(-2deg); }
+  50%      { transform: rotate(2deg); }
+}
+
+@keyframes drift-clouds {
+  0%   { transform: translateX(-10%); }
+  100% { transform: translateX(10%); }
+}
+
+@keyframes fall-petal {
+  0%   { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.9; }
+  100% { transform: translateY(110vh) translateX(40px) rotate(180deg); opacity: 0; }
+}
+
+@keyframes ink-bleed {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 0.3; }
+}
+
+@keyframes temple-glow {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.04); }
+}
+
+@keyframes lightning-flash {
+  0%, 96%, 100% { opacity: 0; }
+  97%            { opacity: 0.6; }
+  98%            { opacity: 0.1; }
+  99%            { opacity: 0.5; }
+}
+
+@keyframes rain-fall {
+  0%   { transform: translateY(-20vh); opacity: 0.4; }
+  100% { transform: translateY(20vh); opacity: 0; }
+}
+
+@keyframes drift-dust {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  15%  { opacity: 0.5; }
+  100% { transform: translate(30px, -60vh); opacity: 0; }
+}
+
+/* ============================================================
+   Touch / click effect keyframes — all sized via --touch-size
+   (medium footprint, ~52px, per design spec)
+   ============================================================ */
+
+@keyframes touch-slash {
+  0%   { transform: scaleX(0) rotate(-20deg); opacity: 1; }
+  60%  { transform: scaleX(1) rotate(-20deg); opacity: 0.9; }
+  100% { transform: scaleX(1.2) rotate(-20deg); opacity: 0; }
+}
+
+@keyframes touch-leaf {
+  0%   { transform: translateY(0) rotate(0deg) scale(0.6); opacity: 1; }
+  100% { transform: translateY(38px) rotate(140deg) scale(1); opacity: 0; }
+}
+
+@keyframes touch-mist {
+  0%   { transform: scale(0.4); opacity: 0.7; filter: blur(0px); }
+  100% { transform: scale(1.6); opacity: 0; filter: blur(4px); }
+}
+
+@keyframes touch-petal {
+  0%   { transform: scale(0.3) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.4) rotate(200deg); opacity: 0; }
+}
+
+@keyframes touch-splatter {
+  0%   { transform: scale(0.2); opacity: 0.9; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+@keyframes touch-spark {
+  0%   { transform: scale(0.3) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.5) rotate(90deg); opacity: 0; }
+}
+
+@keyframes touch-shockwave {
+  0%   { transform: scale(0.2); opacity: 0.8; box-shadow: 0 0 0 0 var(--color-accent); }
+  100% { transform: scale(1.6); opacity: 0; box-shadow: 0 0 0 8px transparent; }
+}
+
+@keyframes touch-puff {
+  0%   { transform: scale(0.3); opacity: 0.7; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Respect reduced-motion preferences: disable ambient + touch animation */
+@media (prefers-reduced-motion: reduce) {
+  .bg-effect-layer *,
+  .touch-effect {
+    animation: none !important;
+  }
+}
