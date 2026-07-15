@@ -1,5 +1,7 @@
 # Ronin Capture — Samurai Screen Recorder
 
+**🔴 Live demo:** [https://mini-project-assessment-2.vercel.app](https://mini-project-assessment-2.vercel.app/)
+
 A browser-based screen recording app with 8 unique samurai-inspired themes,
 built with React + Vite + Supabase (Auth, Postgres, Storage).
 
@@ -65,7 +67,21 @@ npm run build
 npm run preview   # sanity-check the production build locally
 ```
 
-Deploy the `dist/` folder to Vercel or Netlify. Add the two `VITE_SUPABASE_*` env vars in your hosting provider's project settings (Vercel: Project → Settings → Environment Variables). Screen recording requires HTTPS in production — both Vercel and Netlify serve over HTTPS by default.
+## Deployment
+
+This project is deployed on **Vercel**: [https://mini-project-assessment-2.vercel.app](https://mini-project-assessment-2.vercel.app/)
+
+To deploy your own copy:
+1. Push this repo to GitHub
+2. Import it into [Vercel](https://vercel.com) — it auto-detects the Vite framework preset (`npm run build`, output directory `dist`)
+3. Add the two environment variables in **Project Settings → Environment Variables**:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+4. Deploy
+
+Screen recording requires HTTPS in production — Vercel serves everything over HTTPS by default, so this works with no extra config.
+
+> If you enable email confirmation or password-reset flows later, also set **Site URL** and **Redirect URLs** in Supabase (**Authentication → URL Configuration**) to your live domain, e.g. `https://mini-project-assessment-2.vercel.app`.
 
 ## Project Structure
 
